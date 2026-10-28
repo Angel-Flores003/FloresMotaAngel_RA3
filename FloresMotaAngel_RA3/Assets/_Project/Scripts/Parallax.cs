@@ -4,17 +4,25 @@ using RangeAttribute = UnityEngine.RangeAttribute;
 
 public class Parallax : MonoBehaviour
 {
-    GameObject[] backgrounds;
+	/*GameObject[] backgrounds;
     Material[] mat;
     Transform mainCamera;
     Vector3 camStartPosition;
     float distance;
     float farthestBack;
 	float[] backSpeed;
-
     [Range(0.01f, 1f)]
     public float parallaxSpeed;
-	void Start()
+    */
+
+
+	[SerializeField] private float parallaxMultiplier = 0.1f;
+    [SerializeField] protected Transform player;
+    private Material parallaxMaterial;
+    private float Playerx;
+
+
+    /*void Start()
     {
         mainCamera = Camera.main.transform;
         camStartPosition = mainCamera.position;
@@ -33,11 +41,6 @@ public class Parallax : MonoBehaviour
         BackSpeedCalculate(backCount);
 
 	}
-
-    void Update()
-    {
-        
-    }
 
     void BackSpeedCalculate(int backCount)
     {
@@ -66,5 +69,18 @@ public class Parallax : MonoBehaviour
             float speed = backSpeed[i] * parallaxSpeed;
             mat[i].SetTextureOffset("_MainTex", new Vector2(distance, 0) * speed);
         }
+    }*/
+
+
+    private void Start()
+    {
+        parallaxMaterial = GetComponent<Renderer>().material;
+        Playerx = player.position.x;
     }
+    void Update()
+	{
+        float delatx = player.position.x - Playerx;
+        parallaxMaterial.mainTextureOffset += new Vector2(delatx * parallaxMultiplier, 0);
+        Playerx = player.position.x;
+	}
 }
