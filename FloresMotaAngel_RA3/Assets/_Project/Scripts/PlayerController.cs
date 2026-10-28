@@ -10,8 +10,11 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
     private Rigidbody2D rb;
 	private SpriteRenderer spriteRenderer;
 	[SerializeField] private float rayLength = 1f;
+    [SerializeField] private float gravity = 1f;
 	public LayerMask groundLayer;
     private Animator animator;
+
+    private bool isGravityFipped;
 
 	void Start()
     {
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
         rb = GetComponent<Rigidbody2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        rb.gravityScale = gravity;
 	}
 
     void Update()
@@ -65,22 +70,10 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
     {
         if (!context.performed) return;
 
-        if (IsGrounded())
+        if (IsGrounded() && jump.WasPressedThisFrame())
         {
-			if (jump.WasPressedThisFrame())
-			{
-				rb.gravityScale *= -1;
-			}
-
-			if (rb.gravityScale > 0)
-			{
-				spriteRenderer.flipY = false;
-			}
-			else
-			{
-				spriteRenderer.flipY = true;
-			}
-		}
+            FlipGravity();
+        }
 	}
 
     bool IsGrounded()
@@ -89,5 +82,12 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, rayLength, groundLayer);
 
         return hit;
+    }
+
+    void FlipGravity()
+    {
+        isGravityFipped = !isGravityFipped;
+        rb.gravityScale *= -1;
+        spriteRenderer.flipY = isGravityFipped;
     }
 }

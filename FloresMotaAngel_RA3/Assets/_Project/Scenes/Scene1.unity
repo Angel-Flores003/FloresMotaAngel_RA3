@@ -1858,7 +1858,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 7.0303e-41, g: 7.0303e-41, b: 7.0303e-41, a: 7.0303e-41}
   - m_RefCount: 0
-    m_Data: {r: 7.0303e-41, g: 7.0303e-41, b: 7.0303e-41, a: 7.0303e-41}
+    m_Data: {r: 7.088e-41, g: 7.088e-41, b: 7.088e-41, a: 7.088e-41}
   - m_RefCount: 126
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
@@ -5853,6 +5853,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1803522734362100670, guid: 2c59709214e8aa345b6d6ba52f45a85c, type: 3}
+      propertyPath: gravity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803522734362100670, guid: 2c59709214e8aa345b6d6ba52f45a85c, type: 3}
       propertyPath: rayLength
       value: 1
       objectReference: {fileID: 0}
@@ -5914,7 +5918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835646120886999187, guid: 2c59709214e8aa345b6d6ba52f45a85c, type: 3}
       propertyPath: m_GravityScale
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
