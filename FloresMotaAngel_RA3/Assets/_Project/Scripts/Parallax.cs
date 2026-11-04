@@ -16,7 +16,7 @@ public class Parallax : MonoBehaviour
     */
 
 
-	[SerializeField] private float parallaxMultiplier = 0.1f;
+	[SerializeField] private float parallaxMultiplier = 0.00001f;
     [SerializeField] protected Transform player;
     private Material parallaxMaterial;
     private float Playerx;
