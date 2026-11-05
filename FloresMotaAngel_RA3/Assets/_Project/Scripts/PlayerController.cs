@@ -13,7 +13,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
     [SerializeField] private float gravity = 1f;
 	public LayerMask groundLayer;
     private Animator animator;
-
     private bool isGravityFipped;
 
 	void Start()

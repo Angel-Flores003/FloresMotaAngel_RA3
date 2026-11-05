@@ -20,6 +20,5 @@ public class ChangeZone : MonoBehaviour
         {
 			GameEvents.ZoneChange(zone);
 		}
-        
     }
 }
