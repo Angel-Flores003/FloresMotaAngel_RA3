@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
     [SerializeField] private float gravity = 1f;
 	public LayerMask groundLayer;
     private Animator animator;
-    private bool isGravityFipped;
+    private bool isGravityFlipped;
 
 	void Start()
     {
@@ -85,8 +85,16 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerVActions
 
     void FlipGravity()
     {
-        isGravityFipped = !isGravityFipped;
+        isGravityFlipped = !isGravityFlipped;
         rb.gravityScale *= -1;
-        spriteRenderer.flipY = isGravityFipped;
+        spriteRenderer.flipY = isGravityFlipped;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Spikes"))
+        {
+
+        }
     }
 }
